@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"">
+</head>
+<body>
+    <div class="container">
+        <h1>Menu</h1>
+        <div class="menu-item" onclick="toggleSubmenu('sent-message-submenu')">Sent Message
+            <div class="submenu" id="sent-message-submenu">
+                <a href="send_email.html" class="submenu-item">Send Mail</a>
+                <a href="send_whatsapp.html" class="submenu-item">Send WhatsApp Message</a>
+                <a href="send_text.html" class="submenu-item">Send Text Message</a>
+            </div>
+        </div>
+        <div class="menu-item" onclick="toggleSubmenu('aws-submenu')">AWS
+            <div class="submenu" id="aws-submenu">
+                <a href="s3_bucket.html" class="submenu-item">S3 Bucket</a>
+                <a href="instance_launch.html" class="submenu-item">Instance Launch</a>
+            </div>
+        </div>
+        <div class="menu-item" onclick="toggleSubmenu('play-games-submenu')">Play Games
+            <div class="submenu" id="play-games-submenu">
+                <a href="number_guesser.html" class="submenu-item">Number Guesser</a>
+                <a href="random_art_generator.html" class="submenu-item">Random Art Generator</a>
+                <a href="word_counter.html" class="submenu-item">Word Counter</a>
+            </div>
+        </div>
+        <div class="menu-item" onclick="toggleSubmenu('other-options-submenu')">Other Options
+            <div class="submenu" id="other-options-submenu">
+                <a href="check_weather.html" class="submenu-item">Check Weather</a>
+                <a href="check_gps.html" class="submenu-item">Check GPS Coordinate</a>
+                <a href="get_image_labels.html" class="submenu-item">Get Image Labels</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleSubmenu(submenuId) {
+            const submenus = document.querySelectorAll('.submenu');
+            submenus.forEach(submenu => {
+                if (submenu.id === submenuId) {
+                    submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+                } else {
+                    submenu.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+

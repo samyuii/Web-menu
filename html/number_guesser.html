@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Guesser</title>
+    <style>
+        /* Common Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        input[type="number"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+    <!-- Add this script inside the <script> tag in the <head> section of your HTML -->
+<script>
+    function submitGuess() {
+        // Get the guessed number from the input field
+        const guessedNumber = document.getElementById('guessed-number').value;
+
+        // Create a new XMLHttpRequest object
+        const xhr = new XMLHttpRequest();
+        
+        // Configure the request
+        xhr.open('GET', `/cgi-bin/number_guesser.py?guessed-number=${guessedNumber}`, true);
+
+        // Define a callback function to handle the response
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Update the result element with the response
+                    document.getElementById('result').innerHTML = xhr.responseText;
+                } else {
+                    // Handle errors here
+                    document.getElementById('result').innerHTML = 'Error occurred while processing the request.';
+                }
+            }
+        };
+
+        // Send the request
+        xhr.send();
+    }
+</script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Number Guesser</h1>
+        <label for="guessed-number">Your Guess:</label>
+        <input type="number" id="guessed-number" name="guessed-number">
+        <button onclick="submitGuess()">Check Guess</button>
+        <div class="result" id="result">
+            <!-- The result of the guessing will be displayed here -->
+        </div>
+    </div>
+</body>
+</html>
+
