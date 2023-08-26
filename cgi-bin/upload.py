@@ -10,7 +10,7 @@ import numpy as np
 upload_dir = "myupload/"
 aws_access_key = 'AKIAQJYDURIUH7ASYGEB'
 aws_secret_key = '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'
-openai.api_key = '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'
+openai.api_key = 'sk-5FLnU0a4ORqB7dnnnnnnnjslk;sk;sk;lksl;sl;AoyEubs'
 
 print("Content-Type: text/plain")
 print()
